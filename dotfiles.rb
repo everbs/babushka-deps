@@ -7,7 +7,7 @@ meta 'dotfiles' do
       "~/.#{target}".p.exists?
     }
     meet {
-      log_shell "Cloning", "git clone https://github.com/jondkinney/#{repo}.git ~/.#{target}"
+      log_shell "Cloning", "git clone https://github.com/everbs/#{repo}.git ~/.#{target}"
       log "Symlinking"
       shellout = raw_shell("cd ~/.#{target} && chmod +x install.sh && bash install.sh").stdout
       log "#{shellout}"
@@ -16,8 +16,8 @@ meta 'dotfiles' do
 end
 
 dep 'dotfiles', :full_name, :email do
-  full_name.ask('What full name do you want to associate with your github account?').default('Jon Kinney')
-  email.ask('What email do you want to associate with your github account?').default('jonkinney@gmail.com')
+  full_name.ask('What full name do you want to associate with your github account?').default('Eric Verboncouer')
+  email.ask('What email do you want to associate with your github account?').default('everbs@gmail.com')
 
   target = 'dotfiles'
   repo = 'dotfiles'
@@ -25,7 +25,7 @@ dep 'dotfiles', :full_name, :email do
     "~/.#{target}".p.exists?
   }
   meet {
-    log_shell "Cloning", "git clone https://github.com/jondkinney/#{repo}.git ~/.#{target}"
+    log_shell "Cloning", "git clone https://github.com/everbs/#{repo}.git ~/.#{target}"
     log "Symlinking"
     shellout = raw_shell("cd ~/.#{target} && chmod +x install.sh && ./install.sh '#{full_name}' #{email}").stdout
     log "#{shellout}"
